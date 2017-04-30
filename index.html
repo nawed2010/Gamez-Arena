@@ -1,0 +1,66 @@
+<html ng-app="mainApp">
+     <head>
+         <title>Cognizant Games Arena</title>
+         <!-- Bootstrap -->
+         <link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+         <link href = "style.css" rel = "stylesheet">
+      
+     </head>
+     <body ng-controller="MainController">
+         <div class="container-fluid">
+         
+           <header>
+               <h1 class="text-center">Welcome to Cognizant Game Arena</h1></br>
+           </header>
+            <div id="searchBox">
+                <form action="" class="search-form">
+                    <div class="form-group has-feedback">
+                    	<label for="search" class="sr-only">Search</label>
+                		<input type="text" class="form-control" name="search" ng-model="searchString" id="search" placeholder="Search By Name">
+                  		<span class="glyphicon glyphicon-search form-control-feedback"></span>
+                	</div>
+             </form>   
+            </div>
+           <div id="filter">
+              <div class="pull-right">
+    			<div class="btn-group">
+                <p><strong>Click to Filter By:</strong></p>
+					<button type="button" class="btn btn-success btn-filter" data-target="pagado" ng-click="sortByPlatform()">Platform</button>
+					<button type="button" class="btn btn-warning btn-filter" data-target="pendiente" ng-click="sortByScore()">Score</button>
+					<button type="button" class="btn btn-danger btn-filter" data-target="cancelado" ng-click="sortByGenre()">Genre</button>
+					<button type="button" class="btn btn-default btn-filter" data-target="all" ng-click="sortByEditorsChoice()">Editors Choice</button>
+				</div>
+			  </div> 
+           </div>
+             
+            <div class="container bootstrap snippet">
+            <div class="row">
+             <ul class="notes">
+                 <li ng-repeat="game in gamesList | searchFor:searchString">
+                     <div class ="rotate-{{$index % 2}} {{randomColor($index % 4)}}-bg">
+                           <h4>{{game.title}}</h4>
+				        	<ul>
+					        	Platform: {{game.platform}}</br>
+				        		Score: {{game.score}}</br>
+				        		Genre: {{game.genre}}</br>
+				        		Editors Choice: {{game.editors_choice}}
+				        	</ul>
+                     </div>
+                  </li> 
+	        </ul>
+	        </div>
+            </div>
+             
+         </div>
+         
+     </body>
+     
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+     <script src="script.js"></script>
+     
+ </html>
